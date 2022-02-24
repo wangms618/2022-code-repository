@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul li {
+      list-style: none;
+    }
+
+    .item {
+      height: 100px;
+      width: 200px;
+      font-size: 40px;
+      float: left;
+    }
+
+    .item:nth-child(2n) {
+      background-color: hotpink;
+    }
+
+    .item:nth-child(2n-1) {
+      background: forestgreen;
+    }
+
+    /* .clearFix::after {
+      content: '';
+      clear: both;
+      display: block;
+      height: 0;
+    } */
+
+    .list {
+      /* overflow: auto; */
+      float: left;
+    }
+
+    .wrap {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="list clearFix">
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+    <!-- <p class="clearFix"></p> -->
+  </ul>
+  <div class="wrap">hello</div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    Function.prototype.myBind = function (context) {
+      if (typeof this !== 'function') {
+        throw new TypeError('error')
+      }
+      context = context || window
+      const _this = this
+      const args = [...arguments].slice(1)
+      let fn = function () {}
+      // 返回函数
+      let F = function () {
+        // 如果F被new
+        if (this instanceof F) {
+          return new _this(...args, ...arguments)
+        }
+        // 把this调用掉
+        return _this.apply(context, args.concat(...arguments))
+      }
+      fn.prototype = _this.prototype
+      F.prototype = new fn()
+
+      // F.prototype = _this.prototype
+      return F
+    }
+
+    function Animal(name, color) {
+      this.name = name;
+      this.color = color;
+    }
+    Animal.prototype.say = function () {
+      return `I'm a ${this.color} ${this.name}`;
+    };
+    const Cat = Animal.myBind(null, 'cat');
+    const cat = new Cat('white');
+    if (cat.say() === 'I\'m a white cat' &&
+      cat instanceof Cat && cat instanceof Animal) {
+      console.log('success');
+    }
+  </script>
+</body>
+
+</html>

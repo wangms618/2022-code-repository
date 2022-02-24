@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">click</button>
+  <script>
+    var btn = document.getElementById('btn')
+    btn.addEventListener('click', debounce(sayHi))
+    function debounce(fn) {
+      let timeout = null // 创建一个标记用来存放定时器的返回值
+      // 返回一个函数形成闭包，timeout依旧存在
+      return function () {
+        clearTimeout(timeout) // 每当用户点击时，将闭包形成的timeout清除掉
+        timeout = setTimeout(() => { // 创建一个新的timeout
+          fn.apply(this, arguments)
+        }, 500)
+      }
+    }
+
+    function sayHi() {
+      console.log('点击事件');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.fullscreen-layout {
+  display: flex;
+  /* 改变子节点排列方向为纵向排列 */
+  flex-direction: column;
+  width: 400px;
+  height: 400px;
+
+}
+
+header {
+  height: 50px;
+  background-color: #f66;
+}
+
+footer {
+  height: 50px;
+  background-color: #66f;
+}
+
+main {
+  /* 自适应 */
+  flex: 1;
+  background-color: #3c9;
+}
+
+div {
+  overflow: hidden;
+  height: 100%;
+}

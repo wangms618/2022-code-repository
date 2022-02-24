@@ -1,0 +1,24 @@
+.three-column-layout {
+  width: 400px;
+  height: 400px;
+}
+
+.left {
+  float: left;
+  width: 50px;
+  height: 100%;
+  background-color: #f66;
+}
+
+.center {
+  float: left;
+  width: 100px;
+  height: 100%;
+  background-color: #66f;
+}
+
+.right {
+  overflow: hidden;
+  height: 100%;
+  background-color: #3c9;
+}

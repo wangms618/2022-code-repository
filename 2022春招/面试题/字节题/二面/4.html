@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .list {
+      display: flex;
+      /* 如何沿着主轴方向排列子容器 */
+
+      /* 起始端对其 */
+      /* justify-content: flex-start;  */
+      /* 末尾端对其 */
+      /* justify-content: flex-end;   */
+      /* 居中对其 */
+      /* justify-content: center;  */
+      /* 子容器均匀分布 */
+      /* justify-content: space-around; */
+      /* 位于首尾两端的子容器与父容器相切 */
+      /* justify-content: space-between; */
+      /* 不换行 */
+      /* flex-wrap: nowrap; */
+      /* 换行 */
+      /* flex-wrap: wrap; */
+      /* 反向换行 */
+      /* flex-wrap: wrap-reverse; */
+      /* y轴头部对其 */
+      /* align-items: flex-start; */
+      /* y轴底部对其 */
+      /* align-items: flex-end; */
+      /* y轴居中 */
+      /* align-items: center; */
+      /* 基线对其 */
+      /* align-items: baseline; */
+      /* align-items: stretch; */
+      /* 弹性方向改变 */
+      /* flex-direction: column; */
+      /* 反向排列 */
+      /* flex-direction: row-reverse; */
+      /* y轴反向 */
+      /* flex-direction: column-reverse; */
+    }
+
+    .list {
+      height: 500px;
+      background: #e0e0e0;
+    }
+
+    .item {
+      height: 100px;
+      /* width: 200px; */
+      font-size: 40px;
+      flex: 1;
+    }
+
+    .item:nth-child(2n) {
+      background-color: hotpink;
+    }
+
+    .item:nth-child(2n-1) {
+      background: forestgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="list">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <!-- <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div> -->
+  </div>
+</body>
+
+</html>

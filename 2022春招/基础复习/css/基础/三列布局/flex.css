@@ -1,0 +1,17 @@
+.three-column-layout {
+  display: flex;
+  width: 400px;
+  height: 400px;
+}
+.left {
+  width: 50px;
+  background-color: #f66;
+}
+.center {
+  width: 100px;
+  background-color: #66f;
+}
+.right {
+  flex: 1;
+  background-color: #3c9;
+}

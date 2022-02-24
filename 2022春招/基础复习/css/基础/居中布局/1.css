@@ -1,0 +1,13 @@
+.center-layout {
+  display: flex;
+  width: 400px;
+  height: 400px;
+  background-color: #f66;
+}
+
+.center-layout div {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: #66f;
+}

@@ -1,0 +1,32 @@
+/*  */
+.fullscreen-layout {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+header,
+footer,
+main {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+header {
+  top: 0;
+  height: 50px;
+  background-color: #f66;
+}
+
+footer {
+  bottom: 0;
+  height: 50px;
+  background-color: #66f;
+}
+
+main {
+  top: 50px;
+  bottom: 50px;
+  background-color: #3c9;
+}

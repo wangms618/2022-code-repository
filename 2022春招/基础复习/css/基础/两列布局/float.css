@@ -1,0 +1,17 @@
+.two-column-layout {
+  width: 600px;
+  height: 400px;
+}
+
+.left {
+  float: left;
+  width: 100px;
+  height: 100%;
+  background-color: #f66;
+}
+
+.right {
+  margin-left: 100px;
+  height: 100%;
+  background-color: #66f;
+}

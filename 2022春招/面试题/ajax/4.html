@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="status"></div>
+  <script>
+    function ajax(url, method, callback) {
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            callback()
+          } else {
+            console.log('fail');
+          }
+        }
+      }
+      xhr.onprogress = function(event){
+        let divStatus = document.getElementById('status')
+        divStatus.innerHTML = `Received ${event.position} of ${event.totalSize} bytes`
+      }
+      xhr.open(method, url)
+      xhr.send(null)
+    }
+    ajax()
+  </script>
+</body>
+
+</html>

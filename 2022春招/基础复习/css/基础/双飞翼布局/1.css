@@ -1,0 +1,24 @@
+.grail-layout-y {
+  width: 400px;
+  height: 400px;
+}
+
+.left {
+  float: left;
+  width: 100px;
+  height: 100%;
+  background-color: #f66;
+}
+
+.right {
+  float: right;
+  width: 100px;
+  height: 100%;
+  background-color: #66f;
+}
+
+.center {
+  margin: 0 100px;
+  height: 100%;
+  background-color: #3c9;
+}

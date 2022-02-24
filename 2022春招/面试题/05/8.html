@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml/">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建一个work对象
+    var work = new Worker('work.js')
+    // 发送消息
+    work.postMessage('100') // 不跨域
+    work.onmessage = function (e) {
+      console.log(e);
+    }
+  </script>
+</body>
+
+</html>
