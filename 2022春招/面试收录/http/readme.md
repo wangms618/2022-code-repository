@@ -5,6 +5,13 @@ cookie和sessionStorage，localstoreage区别
 进程和线程的区别
 如果一个页面加载很慢，你觉得是什么原因
 
+## 18. Cookie如何防范XSS攻击
+在HTTP头部上配置`set-cookie`  
+有两个属性可以防止`XSS`攻击:  
+`HTTPonly`:这个属性可禁止`JavaScript`访问`Cookie`，故可以保护`Cookie`不被嵌入的恶意代码所获取  
+`secure`：这个属性告诉客户端浏览器仅当在HTTPS请求时发送Cookie
+> response.setHeader("Set-Cookie","cookiename=HTTPonlyTest;Path=/ ;Domain=domainvalue;Hax-Age=seconds;HTTPOnly")
+
 # 了解过http3.0吗
 1. 因为前版本容易阻塞，阻塞http2.0里最大的问题（原因是TCP）,http3.0利用了udp
 

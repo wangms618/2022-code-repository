@@ -1,38 +1,26 @@
-const validPalindrome = function (s) {
-    // 缓存字符串的长度
-    const len = s.length
-
-    // i、j分别为左右指针
-    let i = 0,
-        j = len - 1
-
-    // 当左右指针均满足对称时，一起向中间前进
-    while (i < j && s[i] === s[j]) {
-        i++
-        j--
-    }
-
-    // 尝试判断跳过左指针元素后字符串是否回文
-    if (isPalindrome) {
-        return true
-    }
-    // 尝试判断跳过右指针元素后字符串是否回文
-    if (s[i] == s[j - 1]) {
-        return true
-    }
-    function isPalindrome(st, ed) {
-        while (st < ed) {
-            if (s[st] !== s[ed]) {
-                return false
-            }
-            st++
-            ed--
+/**
+ * @param {string} s
+ * @return {string}
+ */
+// 中心点思想
+// 遍历数组，然后求中心点
+var longestPalindrome = function(s) {
+    let len = s.length
+    const fun = (l,r) => {
+        while(l>=0 && r<len && s[l] === s[r]){
+            l--
+            r++
         }
-        return true
+        return s.slice(l+1,r)
     }
-
-    // 默认返回 false
-    return false
-}
-
-console.log(validPalindrome("bb"))
+    let res = ''
+    for(let i = 0;i<len;i++){
+        // 如果是奇数串，中间点
+        let s1 = fun(i,i)
+        // 如果是偶数串，两个点
+        let s2 = fun(i,i+1)
+        res = res.length > s1.length ? res : s1
+        res = res.length > s2.length ? res : s2
+    }
+    return res
+};

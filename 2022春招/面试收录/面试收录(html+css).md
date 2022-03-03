@@ -16,3 +16,10 @@
 2. 使用createDocumentFragment进行批量的 DOM 操作。
 3. 对于 resize、scroll 等进行防抖/节流处理。
 4. 对需要修改的DOM先用display:none隐藏起来，等所有dom操作完成时再舍弃display:none
+
+CSS 中的以下几个属性能触发硬件加速：
+
+transform
+opacity
+filter
+will-change
