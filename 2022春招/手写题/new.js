@@ -10,7 +10,6 @@ function myNew() {
     let fn = [].shift.call(arguments)
     obj.__proto__ = fn.prototype
     let result = fn.apply(obj, arguments)
-    console.log(result);
     return result instanceof Object ? result : obj
 }
 let p2 = myNew(Person, 1, 2)
