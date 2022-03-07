@@ -3,7 +3,7 @@
 // 输入 the	sky	is												blue!
 // 输出 blue! is sky the
 const foo = (str) => {
-    str = str.split(' ')
+    str = str.match(/[^\s]+/g)
     console.log(str);
 }
 const str = 'the	sky	is												blue!'
