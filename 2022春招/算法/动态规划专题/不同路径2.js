@@ -12,14 +12,14 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
     dp[0][0] = obstacleGrid[0][0] ? 0 : 1
     for (let i = 1; i < m; i++) {
         // 未遇到障碍 且 前一个格子可以到达(dp[i-1][0] !== 0)
-        if (i > 0 && obstacleGrid[i][0] == 0 && dp[i - 1][0]) {
+        if (obstacleGrid[i][0] == 0 && dp[i - 1][0]) {
             dp[i][0] = 1
         } else {
             dp[i][0] = 0
         }
     }
     for (let j = 1; j < n; j++) {
-        if (j > 0 && obstacleGrid[0][j] == 0 && dp[0][j - 1]) {
+        if (obstacleGrid[0][j] == 0 && dp[0][j - 1]) {
             dp[0][j] = 1
         } else {
             dp[0][j] = 0

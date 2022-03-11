@@ -18,7 +18,9 @@ var integerBreak = function (n) {
     dp[2] = 1
     for (let i = 3; i <= n; i++) {
         dp[i] = 0
+        
         for (let j = 1; j <= i - j; j++) {
+            // dp[i]会多次循环
             dp[i] = Math.max(dp[i], j * (i - j), j * dp[i - j])
         }
     }
