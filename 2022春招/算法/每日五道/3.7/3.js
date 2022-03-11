@@ -3,6 +3,7 @@
 // 输入 the	sky	is												blue!
 // 输出 blue! is sky the
 const foo = (str) => {
+    // 找到除空格的选项
     str = str.match(/[^\s]+/g)
     console.log(str);
 }
