@@ -10,3 +10,16 @@ n表明有多少顾客前来点菜，m表示小美现在能做的菜的编号范
 输出描述
 一行一个正整数表示最多有多少顾客可以满意。
 */
+
+let n = 3
+let m = 4
+let arr = [
+    [1, 2],
+    [2, 3],
+    [3, 4]
+]
+
+function three(n, m, arr) {
+    
+}
+console.log(three(n, m, arr));

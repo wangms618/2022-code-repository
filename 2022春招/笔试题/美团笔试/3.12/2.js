@@ -20,3 +20,28 @@
 共有6个连续子序列满足要求。
 [1], [1], [1, 1], [-1, -1], [1, -1, -1], [1, 1, -1, -1]
 */
+
+
+const arr = [1, 1, 1, -1, -1]
+
+function two(arr) {
+    let len = arr.length
+    let pre = [0]
+    for (let i = 0; i < len; i++) {
+        if (arr[i] == -1) {
+            arr[i] = 1
+        } else {
+            arr[i] = 0
+        }
+        pre[i + 1] = pre[i] + arr[i]
+    }
+    let res = 0
+    for (let i = 1; i <= len; i++) {
+        for (let j = 0; j < i; j++) {
+            let tmp = pre[i] - pre[j];
+            if (tmp % 2 == 0) res++;
+        }
+    }
+    return res
+}
+console.log(two(arr));
