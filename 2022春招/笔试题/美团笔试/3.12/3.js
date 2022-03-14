@@ -18,8 +18,16 @@ let arr = [
     [2, 3],
     [3, 4]
 ]
-
+// 枚举所有状态
+// 怎么枚举
 function three(n, m, arr) {
-    
+    // 先将所有菜品设置为1
+    let res = 0  
+    let nums = (new Array(m)).fill(1)
+    for (let i = 0; i < n; i++){
+        let sum = 0
+        
+    }
+    console.log(nums);
 }
 console.log(three(n, m, arr));
