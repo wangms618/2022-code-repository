@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hash 实现</title>
+</head>
+
+<body>
+    <div class="page">
+        <ul>
+            <!-- 两个页面 -->
+            <li>
+                <a href="#/home">首页</a>
+            </li>
+            <li>
+                <a href="#/about">关于</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 将对应url的结构放到这个dom结构里面 -->
+    <div id="routerView"></div>
+
+    <script>
+        // 拿到routerView的dom结构
+        let routerView = document.querySelector('#routerView')
+
+        // 监听路由变化
+        window.addEventListener('hashchange', onHashChange)
+
+        // 页面初次加载或监听页面初次渲染完成任选其一就好
+
+        // 页面初次加载执行一次hash监听
+        // window.onload = function(){
+        //   onHashChange()
+        // } 
+
+        // 监听页面的初次渲染完成
+        window.addEventListener('DOMContentLoaded', onHashChange)
+
+        function onHashChange() {
+            // hashchange事件触发可以用location.hash拿到当前浏览器地址的 hash 值根据不同路径展示不同的内容
+            console.log(location.hash);
+            switch (location.hash) {
+                case '#/home':
+                    routerView.innerHTML = '这是首页页面';
+                    return
+                case '#/about':
+                    routerView.innerHTML = '这是关于页面';;
+                    return
+                default:
+                    return
+            }
+        }
+    </script>
+</body>
+
+</html>
