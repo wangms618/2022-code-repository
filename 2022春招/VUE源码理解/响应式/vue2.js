@@ -37,7 +37,7 @@ function observer(target) { // 观察者
 }
 // 劫持函数
 function defineReactive(target, key, value) {
-  // 如果传入的是一个对象，做递归
+  // 如果传入target[key]的是一个对象，做递归
   if (typeof value == 'object' && value !== null) {
     observer(value)
   }

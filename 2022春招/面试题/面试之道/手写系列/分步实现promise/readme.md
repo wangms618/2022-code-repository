@@ -7,7 +7,7 @@
 ```js
 promise
 ```
-可以看到原生Promise执行执行resolve，Promise状态会变成fulfilled；执行reject, Promise状态会变成rejected。promise只以第一次执行为准，状态修改后无法再次修改，即每一次promise只能使用一次resolved或reject。
+可以看到原生Promise执行resolve，Promise状态会变成fulfilled；执行reject, Promise状态会变成rejected。promise只以第一次执行为准，状态修改后无法再次修改，即每一次promise只能使用一次resolved或reject。
 了解这些，实现resolve和reject
 ### 第一步
 明确需求：

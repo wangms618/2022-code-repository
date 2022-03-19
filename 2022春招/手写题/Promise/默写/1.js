@@ -5,7 +5,12 @@ class myPromise {
         this.reason = null
         this.resolve = this.resolve.bind(this)
         this.reject = this.reject.bind(this)
-        executor(this.resolve, this.reject)
+        try {
+            executor(this.resolve, this.reject)
+        } catch (error) {
+            this.reject(error)
+        }
+
     }
 
     resolve(value) {
