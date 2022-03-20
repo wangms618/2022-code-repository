@@ -25,14 +25,14 @@ const arr = [1, 2, 3, 4, [1, 2, 3, [1, 2, 3, [1, 2, 3]]], 5, "string", {
 // res2 = '[' + res2 + ']'
 // console.log(JSON.parse(res2));
 
-const myFlat2 = (arr, depth) => {
-    return arr.reduce((pre, cur) => {
-        return pre.concat((Array.isArray(cur) && depth > 0) ? myFlat2(cur, depth - 1) : cur)
-    }, [])
-}
+// const myFlat2 = (arr, depth) => {
+//     return arr.reduce((pre, cur) => {
+//         return pre.concat((Array.isArray(cur) && depth > 0) ? myFlat2(cur, depth - 1) : cur)
+//     }, [])
+// }
 // const myFlat = (arr, depth) => {
 //     return arr.reduce((pre, cur) => {
 //         return pre.concat((Array.isArray(cur) && depth > 0) ? myFlat(cur, depth - 1) : cur)
 //     }, [])
 // }
-console.log(myFlat2(arr, 2));
+// console.log(myFlat2(arr, 2));
