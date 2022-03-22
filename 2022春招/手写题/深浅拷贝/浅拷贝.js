@@ -8,16 +8,16 @@
 // let arr2 = Object.assign([], arr)
 // arr2[1].b = 3
 // console.log(arr, arr2);
-// let obj1 = {
-//     person: {
-//         name: "kobe",
-//         age: 41
-//     },
-//     sports: 'basketball'
-// };
-// let obj2 = Object.assign({}, obj1)
-// obj2.sports = 'football'
-// console.log(obj1, obj2);
+let obj1 = {
+    person: {
+        name: "kobe",
+        age: 41
+    },
+    sports: 'basketball'
+};
+let obj2 = Object.assign({}, obj1)
+obj2.sports = 'football'
+console.log(obj1, obj2);
 
 // ! 解构赋值
 // let obj1 = {
@@ -55,12 +55,12 @@ const shallowClone = (obj) => {
     }
     return res
 }
-let obj1 = {
-    person: {
-        name: "kobe",
-        age: 41
-    },
-    sports: 'basketball'
-};
-let obj2 = shallowClone(obj1)
-console.log(obj1, obj2);
+// let obj1 = {
+//     person: {
+//         name: "kobe",
+//         age: 41
+//     },
+//     sports: 'basketball'
+// };
+// let obj2 = shallowClone(obj1)
+// console.log(obj1, obj2);
