@@ -11,6 +11,7 @@ class EventEmitter {
   }
   emit(type, ...rest) {
     // this.event[type] && this.event[type].forEach(fb => fb.apply(this, rest))
+    console.log(rest);
     if (this.event[type]) {
       this.event[type].forEach(fb => fb.apply(this, rest))
     }
@@ -29,4 +30,4 @@ eve.on('aaa', () => {
   console.log('hellozz');
 })
 
-eve.emit('aaa', 123)
+eve.emit('aaa', 123,11)
