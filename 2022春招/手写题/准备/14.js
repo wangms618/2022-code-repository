@@ -1,12 +1,9 @@
 function curry(fn, args) {
     // 获取函数需要的参数长度
     let length = fn.length;
-
     args = args || [];
-
     return function () {
         let subArgs = args.slice(0);
-
         // 拼接得到现有的所有参数
         for (let i = 0; i < arguments.length; i++) {
             subArgs.push(arguments[i]);
@@ -23,7 +20,11 @@ function curry(fn, args) {
     };
 }
 
-// es6 实现
-function curry(fn, ...args) {
-    return fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args);
+function test(x, y, z) {
+    console.log(x, y, z);
 }
+
+let test1 = curry(test, [2])
+let test2 = test1(1)
+let test3 = test2(1)
+// let test4 = test3(1)
