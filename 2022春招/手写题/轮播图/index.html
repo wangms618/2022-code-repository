@@ -1,0 +1,81 @@
+<style>
+    img {
+        width: 100%;
+    }
+
+    .li_img {
+        width: 800px;
+        float: left;
+        list-style: none;
+    }
+
+    .ul_img {
+        width: 6000px;
+        padding: 0px;
+        margin: 0px;
+        transition: all 2s;
+    }
+
+    .main_div {
+        width: 800px;
+        overflow: hidden;
+        position: relative;
+        top: 100px;
+        left: 350px;
+    }
+
+    .arrows {
+        z-index: 9999;
+        position: absolute;
+        padding-top: 230px;
+        width: 800px;
+    }
+
+    .arrows span {
+        font-size: 3em;
+        color: seashell;
+    }
+
+    .arrows span:hover {
+        /*变小手*/
+        cursor: pointer;
+        background-color: rgba(192, 192, 192, 0.29);
+    }
+
+    .div_btn {
+        float: left;
+        border-radius: 100px;
+        background-color: aquamarine;
+        width: 60px;
+        height: 10px;
+        margin-left: 10px;
+        margin-top: 130px;
+    }
+
+    .div_btn:hover {
+        background-color: aqua;
+
+    }
+</style>
+<div class="main_div">
+    <div class="arrows">
+        <span title="1" class="arrow">
+            <</span> <span title="0" class="arrow" style="float: right">>
+        </span>
+    </div>
+
+    <ul class="ul_img">
+        <li class="li_img">![](images/摄图网-水珠在竹叶上.jpg)</li>
+        <li class="li_img">![](images/摄图网-在海边的人.jpg)</li>
+        <li class="li_img">![](images/摄图网-清凉的荷叶.jpg)</li>
+        <li class="li_img">![](images/摄图网-绵延不绝的山岭.jpg)</li>
+    </ul>
+</div>
+
+<div style="margin-left: 600px">
+    <div class="div_btn"></div>
+    <div class="div_btn"></div>
+    <div class="div_btn"></div>
+    <div class="div_btn"></div>
+</div>
+<script src="./index.js"></script>
