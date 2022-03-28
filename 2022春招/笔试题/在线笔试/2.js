@@ -18,4 +18,3 @@ function lowStr(str) {
     return str[str.length - 1] == ' ' ? 0 : str[str.length - 1].length
 }
 console.log(lowStr('Hello World'));
-let a = 0
