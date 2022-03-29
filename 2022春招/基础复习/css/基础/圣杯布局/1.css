@@ -3,14 +3,14 @@
 }
 
 .grail-layout-x {
-  /* padding: 0 100px; */
+  padding: 0 100px;
   width: 400px;
   height: 400px;
 }
 
 .left {
   float: left;
-  /* margin-left: -100px; */
+  margin-left: -100px;
   width: 100px;
   height: 100%;
   background-color: #f66;
@@ -18,7 +18,7 @@
 
 .right {
   float: right;
-  /* margin-right: -100px; */
+  margin-right: -100px;
   width: 100px;
   height: 100%;
   background-color: #66f;
