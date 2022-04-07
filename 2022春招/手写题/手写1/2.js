@@ -5,5 +5,5 @@ function myNew() {
     let fn = [].shift.call(arguments)
     obj.__proto__ = fn.prototype
     let result = fn.apply(obj, arguments)
-    return (typeof result === 'object' || typeof result === 'function') ? object : obj
+    return (typeof result === 'object' || typeof result === 'function') ? result : obj
 }
