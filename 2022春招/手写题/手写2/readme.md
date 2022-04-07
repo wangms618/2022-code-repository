@@ -1,0 +1,16 @@
+1. object.create
+2. new
+3. instanceof
+4. call
+5. apply
+6. bind
+7. bind完整版
+8. 浅拷贝
+9. 深拷贝
+10. 数组拍平，falt版
+11. 去重
+12. 防抖
+13. 节流
+14. 柯里化
+15. promise.all
+16. promise.race
