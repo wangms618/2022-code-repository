@@ -6,7 +6,7 @@ Function.prototype.myCall = function (context) {
     context = context || window
     let args = [...arguments].slice(1)
     context.fn = this
-    result = context.fn(...args)
+    let result = context.fn(...args)
     delete context.fn
     return result
 }
