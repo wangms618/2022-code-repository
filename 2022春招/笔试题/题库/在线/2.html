@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button class="father" onclick="setCookie('father',123213,3600)">123</button>
+    <button class="son" onclick="getCookie('father')">123</button>
+    <script>
+        let i = 1
+
+        function setCookie(name, value, day) {
+            // 获取到当前的时间
+            var D = new Date()
+            // 在当前时间的基础上，加上过期的时间
+            D.setDate(D.getDate() + day)
+            document.cookie = name + '' + i++ + "=" + value + ";expires=" + D
+        }
+
+        function getCookie(name) {
+            var str = document.cookie;
+            console.log(str);
+            var arr = str.split(";");
+            for (var n = 0; n < arr.length; n++) {
+                var x = arr[n].split("=");
+                if (x[0] == name) {
+                    return x[1];
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>
