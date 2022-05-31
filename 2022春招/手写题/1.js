@@ -1,12 +1,19 @@
-function typeOf(obj) {
-    // console.log(Object.prototype.toString.call(obj));
-    // let res = Object.prototype.toString.call(obj).split(' ')[1]
-
-    // res = res.substring(0, res.length - 1).toLowerCase()
-    // return res
-    // 评论区里提到的更好的写法
-    return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+function testAsy(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, 3000)
+    })
 }
-console.log(typeOf([])); // 'array'
-typeOf({}) // 'object'
-typeOf(new Date) // 'date'
+
+function testaa() {
+    return '123'
+}
+async function testAwt() {
+    // 这testaa里面没有异步，但是还是会阻塞，先让cug输出
+    let result = await testaa();
+    console.log(result); // 3秒钟之后出现hello world
+    console.log('cuger') // 3秒钟之后出现cug
+}
+testAwt();
+console.log('cug') //立即输出cug

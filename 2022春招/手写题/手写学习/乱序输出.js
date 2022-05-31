@@ -3,22 +3,21 @@
 // ● 按照上面的规律执行，直到遍历完成
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-// function random(nums) {
-//     let len = nums.length
-//     for (let i = 0; i < len; i++) {
-//         let indexRandom = Math.floor(Math.random() * (len - i)) + i;
-//         [nums[i], nums[indexRandom]] = [nums[indexRandom], nums[i]]
-//     }
-//     return nums
-// }
-// console.log(random(arr));
+function random(nums) {
+    let len = nums.length
+    for (let i = 0; i < len; i++) {
+        let indexRandom = Math.floor(Math.random() * (len - i)) + i;
+        [nums[i], nums[indexRandom]] = [nums[indexRandom], nums[i]]
+    }
+    return nums
+}
+console.log(random(arr));
 // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let length = arr.length,
     randomIndex,
     temp;
 while (length) {
     randomIndex = Math.floor(Math.random() * length--);
-    console.log(randomIndex, length);
     [arr[length], arr[randomIndex]] = [arr[randomIndex], arr[length]]
 }
 console.log(arr)

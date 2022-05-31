@@ -20,6 +20,7 @@ function curry(fn, args) {
     };
 }
 
+
 function test(x, y, z) {
     console.log(x, y, z);
 }
