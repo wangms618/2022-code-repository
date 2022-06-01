@@ -1,17 +1,17 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import robots from "./mockdata/robot.json";
 import Robot from "./components/Robot";
 
 function App() {
     return (
-        <>
-            <ul>
+        <div className={styles.app}>
+            <div className={styles.robotList}>
                 {robots.map(r => (
                     <Robot id={r.id} email={r.email} name={r.name} />
                 ))}
-            </ul>
-        </>
+            </div>
+        </div>
     );
 }
 
