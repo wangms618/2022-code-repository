@@ -12,7 +12,8 @@ interface State {
 
 const App: React.FC = () => {
     const [count, setCount] = useState<number>(0);
-
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string>("");
     const [robotGallery, setRobotGallery] = useState<any>([]);
 
     // 默认情况，每次UI渲染或者状态改变的时候，useEffect都会执行
@@ -21,10 +22,26 @@ const App: React.FC = () => {
         document.title = `点击${count}次`;
     }, [count]);
 
+    // useEffect第一个参数不允许async修饰
+    // 报错：类型“() => Promise<void>”的参数不能赋给类型“EffectCallback”的参数。不能将类型“Promise<void>”分配给类型“void | Destructor”。
+    // 原因：useEffect要么返回一个函数，要么什么都不返回，使用async，函数将会返回Promise
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(res => setRobotGallery(res));
+        // 使用异步需要注意的事
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const responses = await fetch(
+                    "https://jsonplaceholder.typicode.com/users"
+                );
+                const data = await responses.json();
+                setRobotGallery(data);
+            } catch (e: any) {
+                setError(e.message);
+            }
+
+            setLoading(false);
+        };
+        fetchData();
     }, []);
 
     return (
@@ -43,11 +60,16 @@ const App: React.FC = () => {
             </button>
             <span>count:{count}</span>
             <ShoppingCart></ShoppingCart>
-            <div className={styles.robotList}>
-                {robotGallery.map(r => (
-                    <Robot id={r.id} email={r.email} name={r.name} />
-                ))}
-            </div>
+            {error !== "" && <div>网站出错：{error}</div>}
+            {!loading ? (
+                <div className={styles.robotList}>
+                    {robotGallery.map(r => (
+                        <Robot id={r.id} email={r.email} name={r.name} />
+                    ))}
+                </div>
+            ) : (
+                <h2>loading 加载中</h2>
+            )}
         </div>
     );
 
