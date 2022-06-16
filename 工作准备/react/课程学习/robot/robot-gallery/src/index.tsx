@@ -3,22 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
-// Context上下文
-const defaultContextValue = {
-    username: "老鱼吃虾米",
-};
-
-export const appContext = React.createContext(defaultContextValue);
+import { AppStateProvider } from "./AppState";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <appContext.Provider value={defaultContextValue}>
+        {/* @ts-ignore */}
+        <AppStateProvider>
             <App />
-        </appContext.Provider>
+        </AppStateProvider>
     </React.StrictMode>
 );
 
