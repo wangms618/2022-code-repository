@@ -1,0 +1,19 @@
+.content {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    width:1230px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.images {
+    width: 100px;
+    height: 50px;
+}
