@@ -1,68 +1,28 @@
 import React from "react";
 import styles from "./App.module.css";
-import {
-    Header,
-    Footer,
-    Carousel,
-    SideMenu,
-    ProductCollection,
-    Partner,
-} from "./components";
-import { Row, Col, Typography } from "antd";
-import {
-    productList1,
-    productList2,
-    productList3,
-    partnerImages,
-} from "./mockups";
-import sideImage from "./assets/images/sider_2019_12-09.png";
-import sideImage2 from "./assets/images/sider_2019_02-04.png";
-import sideImage3 from "./assets/images/sider_2019_02-04-2.png";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HomePage, SignInPage, RegisterPage, DetailPage } from "./pages";
 
 function App() {
     return (
         <div className={styles.App}>
-            <Header />
-            {/* 页面内容 content */}
-            <div className={styles["page-content"]}>
-                <Row style={{ marginTop: 20 }}>
-                    <Col span={6}>
-                        <SideMenu />
-                    </Col>
-                    <Col span={18}>
-                        <Carousel />
-                    </Col>
-                </Row>
-                <ProductCollection
-                    title={
-                        <Typography.Title level={3} type="warning">
-                            爆款推荐
-                        </Typography.Title>
-                    }
-                    sideImage={sideImage}
-                    products={productList1}
-                />
-                <ProductCollection
-                    title={
-                        <Typography.Title level={3} type="danger">
-                            新品上市
-                        </Typography.Title>
-                    }
-                    sideImage={sideImage2}
-                    products={productList2}
-                />
-                <ProductCollection
-                    title={
-                        <Typography.Title level={3} type="success">
-                            国内游推荐
-                        </Typography.Title>
-                    }
-                    sideImage={sideImage3}
-                    products={productList3}
-                />
-            </div>
-            <Partner images={partnerImages}></Partner>
-            <Footer />
+            <BrowserRouter>
+                {/* 页面切换switch */}
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route path="/signIn" component={SignInPage} />
+                    <Route path="/register" component={RegisterPage} />
+                    {/* 携带参数,格式：/detail/123 */}
+                    <Route
+                        path="/detail/:touristRouteId"
+                        component={DetailPage}
+                    />
+                    <Route
+                        render={() => <h1>404 not found 页面不存在</h1>}
+                    ></Route>
+                </Switch>
+                {/* exact告诉route组件，有且仅能url的路径一模一样的时候才能执行，如果不加，/signIn路由下也可打开'/'下的页面 */}
+            </BrowserRouter>
         </div>
     );
 }

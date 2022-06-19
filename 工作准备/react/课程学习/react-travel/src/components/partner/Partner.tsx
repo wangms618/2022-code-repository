@@ -15,9 +15,9 @@ export const Partner: React.FC<PartnerProps> = ({ images }) => {
             </Divider>
 
             <Row>
-                {images.map(url => {
+                {images.map((url, index) => {
                     return (
-                        <Col className={styles.flex} span={6}>
+                        <Col key={index} className={styles.flex} span={6}>
                             <img className={styles.images} src={url} alt="" />
                         </Col>
                     );
