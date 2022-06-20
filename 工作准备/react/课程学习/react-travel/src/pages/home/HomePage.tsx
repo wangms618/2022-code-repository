@@ -17,10 +17,12 @@ import partner1 from "../..//assets/images/follow-826033_640.png";
 import partner2 from "../..//assets/images/facebook-807588_640.png";
 import partner3 from "../..//assets/images/icon-720944_640.png";
 import partner4 from "../../assets/images/microsoft-80658_640.png";
+import { withTranslation, WithTranslation } from "react-i18next";
 const partnerImages = [partner1, partner2, partner3, partner4];
 
-export class HomePage extends React.Component {
+class HomePageComponent extends React.Component<WithTranslation> {
     render() {
+        const { t } = this.props;
         return (
             <>
                 <Header />
@@ -37,7 +39,7 @@ export class HomePage extends React.Component {
                     <ProductCollection
                         title={
                             <Typography.Title level={3} type="warning">
-                                爆款推荐
+                                {t("home_page.hot_recommended")}
                             </Typography.Title>
                         }
                         sideImage={sideImage}
@@ -46,7 +48,7 @@ export class HomePage extends React.Component {
                     <ProductCollection
                         title={
                             <Typography.Title level={3} type="danger">
-                                新品上市
+                                {t("home_page.new_arrival")}
                             </Typography.Title>
                         }
                         sideImage={sideImage2}
@@ -55,7 +57,7 @@ export class HomePage extends React.Component {
                     <ProductCollection
                         title={
                             <Typography.Title level={3} type="success">
-                                国内游推荐
+                                {t("home_page.domestic_travel")}
                             </Typography.Title>
                         }
                         sideImage={sideImage3}
@@ -68,3 +70,5 @@ export class HomePage extends React.Component {
         );
     }
 }
+
+export const HomePage = withTranslation()(HomePageComponent);

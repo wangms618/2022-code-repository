@@ -25,7 +25,7 @@ const ProductImageComponent: React.FC<PropsType> = ({
     // console.log(match)
     return (
         <Link to={`detail/${id}`}>
-            {size == "large" ? (
+            {size === "large" ? (
                 <Image
                     preview={false}
                     src={imageSrc}
