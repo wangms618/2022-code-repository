@@ -16,16 +16,31 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
             language: storeState.language,
             languageList: storeState.languageList,
         };
+        // 订阅store数据仓库，store数据发生变化，会通过回调函数的方式返回到组件中
+        store.subscribe(() => {
+            const storeState = store.getState();
+            this.setState({
+                language: storeState.language,
+                languageList: storeState.languageList,
+            });
+        });
     }
 
     menuClickHandler = e => {
-        console.log(e);
-        const action = {
-            type: "change_language",
-            payload: e.key,
-        };
+        if (e.key === "new") {
+            const action = {
+                type: "add_language",
+                payload: { code: "new_lang", name: "新语言" },
+            };
+            store.dispatch(action);
+        } else {
+            const action = {
+                type: "change_language",
+                payload: e.key,
+            };
 
-        store.dispatch(action);
+            store.dispatch(action);
+        }
     };
 
     render() {
@@ -47,6 +62,9 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
                                             </Menu.Item>
                                         );
                                     })}
+                                    <Menu.Item key={"new"}>
+                                        添加新语言
+                                    </Menu.Item>
                                 </Menu>
                             }
                             icon={<GlobalOutlined />}
