@@ -1,0 +1,6 @@
+- fs.mkdir 创建目录
+- fs.rename 重命名
+- fs.rmdir 删除目录
+- fs.writeFile 创建文件 如果已有文件，再执行会覆盖原文件
+- fs.appendFile 创建文件 如果已有文件，在原有文件上追加内容
+- fs.unlink 删除文件
