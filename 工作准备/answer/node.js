@@ -2,6 +2,9 @@ import {
     readdir,
     stat
 } from 'node:fs/promises';
+import {
+    extname
+} from "node:path"
 const fileList = {}
 // 传入文件列表和初始目录
 const search = async (files, basePath) => {
@@ -15,7 +18,7 @@ const search = async (files, basePath) => {
         }
         // // 如果是文件,取到文件的后缀查看
         if (data.isFile()) {
-            const type = item.split(".").pop()
+            const type = extname(item)
             if (fileList[type]) {
                 fileList[type] = ++fileList[type]
             } else {

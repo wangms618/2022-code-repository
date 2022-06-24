@@ -1,0 +1,1 @@
+node:child_process 模块提供了以与 popen(3) 类似但不完全相同的方式衍生子进程的能力。 
