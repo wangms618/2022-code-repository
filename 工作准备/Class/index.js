@@ -1,8 +1,20 @@
-class Todo {
-    // constructor(id) {
-    //     this.id = 1
-    // }
-    id = 2
+class MyClass {
+    constructor() {
+        // ...
+    }
+    get prop() {
+        return 'getter';
+    }
+    set prop(value) {
+        console.log('setter: ' + value);
+    }
 }
 
-console.log(new Todo());
+let inst = new MyClass();
+console.log(inst);
+
+inst.prop = 123;
+// setter: 123
+
+inst.prop
+// 'getter'
