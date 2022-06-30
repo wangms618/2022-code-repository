@@ -1,72 +1,70 @@
 import React, { Component, Fragment } from "react";
+// import styles from "./todoList.less";
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { Input, Button, List } from "antd";
+import store from "../../store";
 class TodoList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            inputValue: "",
-            list: ["学习", "good"],
-        };
+        this.state = store.getState();
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleStoreChange = this.handleStoreChange.bind(this);
+        store.subscribe(this.handleStoreChange); // 响应式获取store数据
     }
 
     handleInputChange(e) {
-        this.setState(() => {
-            return { inputValue: e.target.value };
-        });
-        // this.setState({ inputValue: e.target.value });
+        const action = {
+            type: "change_input_value",
+            value: e.target.value,
+        };
+        store.dispatch(action);
     }
 
-    handleInputPush() {
-        this.setState(() => {
-            return {
-                list: [...this.state.list, this.state.inputValue],
-                inputValue: "",
-            };
-        });
-        // this.setState({
-        //     list: [...this.state.list, this.state.inputValue],
-        //     inputValue: "",
-        // });
+    handleBtnClick() {
+        const action = {
+            type: "add_todo_item",
+        };
+        store.dispatch(action);
     }
 
     handleItemDelete(index) {
-        const list = [...this.state.list];
-        list.splice(index, 1);
-        this.setState({
-            list: list,
-        });
+        const action = {
+            type: "delete_todo_item",
+            index: index,
+        };
+        store.dispatch(action);
     }
-
-    // componentDidUpdate() {
-    //     console.log(this.state.inputValue);
-    // }
+    handleStoreChange() {
+        this.setState(store.getState());
+    }
     render() {
         return (
             <Fragment>
-                <div>
-                    <input
+                <div style={{ marginTop: "10px", marginLeft: "10px" }}>
+                    <Input
                         value={this.state.inputValue}
-                        onChange={this.handleInputChange.bind(this)}
-                        type="text"
+                        onChange={this.handleInputChange}
+                        placeholder="todo Info"
+                        style={{ width: "300px", marginRight: "10px" }}
                     />
-                    <button onClick={this.handleInputPush.bind(this)}>
+                    <Button onClick={this.handleBtnClick.bind(this)}>
                         提交
-                    </button>
-                    <ul>
-                        {this.state.list.map((item, index) => {
-                            return (
-                                <li
-                                    onClick={this.handleItemDelete.bind(
-                                        this,
-                                        index
-                                    )}
-                                    key={index}
-                                    dangerouslySetInnerHTML={{ __html: item }}
-                                >
-                                    {/* {item} */}
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    </Button>
+                    <List
+                        bordered
+                        dataSource={this.state.list}
+                        renderItem={(item, index) => (
+                            <List.Item
+                                onClick={this.handleItemDelete.bind(
+                                    this,
+                                    index
+                                )}
+                            >
+                                {item}
+                            </List.Item>
+                        )}
+                        style={{ width: "300px", marginTop: "10px" }}
+                    />
                 </div>
             </Fragment>
         );
