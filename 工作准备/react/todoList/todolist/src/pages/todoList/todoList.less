@@ -1,14 +1,15 @@
-.input{
-    color: red;
-}
-
-.lessbox{
-    width: 1000px;
-    height: 1000px;
-    border: 1px solid red;
-}
-
-.list{
-    width: "100px";
-    margin-top: "10px";
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    &-content{
+        margin: auto;
+        margin-top: 10px;
+        &__switch{
+            margin-top: 10px;
+            width: 600px;
+            display: flex;
+            justify-content: center;
+        }
+    }
 }

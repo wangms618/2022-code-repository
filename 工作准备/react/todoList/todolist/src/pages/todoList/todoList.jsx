@@ -1,8 +1,15 @@
 import React, { Component, Fragment } from "react";
-// import styles from "./todoList.less";
+import styles from "./todoList.less";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import { Input, Button, List } from "antd";
 import store from "../../store";
+import {
+    getInputChangeAction,
+    getAddItemAction,
+    getDeleteItemAction,
+    getChangeSwitchAction,
+} from "../../store/actionCreators";
+import { DisplayDone } from "../../const";
 class TodoList extends Component {
     constructor(props) {
         super(props);
@@ -13,58 +20,74 @@ class TodoList extends Component {
     }
 
     handleInputChange(e) {
-        const action = {
-            type: "change_input_value",
-            value: e.target.value,
-        };
-        store.dispatch(action);
+        getInputChangeAction(e.target.value);
     }
 
     handleBtnClick() {
-        const action = {
-            type: "add_todo_item",
-        };
-        store.dispatch(action);
+        getAddItemAction();
     }
 
     handleItemDelete(index) {
-        const action = {
-            type: "delete_todo_item",
-            index: index,
-        };
-        store.dispatch(action);
+        getDeleteItemAction(index);
     }
     handleStoreChange() {
         this.setState(store.getState());
     }
+
+    handleChangeSwitch() {
+        getChangeSwitchAction();
+    }
     render() {
         return (
             <Fragment>
-                <div style={{ marginTop: "10px", marginLeft: "10px" }}>
-                    <Input
-                        value={this.state.inputValue}
-                        onChange={this.handleInputChange}
-                        placeholder="todo Info"
-                        style={{ width: "300px", marginRight: "10px" }}
-                    />
-                    <Button onClick={this.handleBtnClick.bind(this)}>
-                        提交
-                    </Button>
-                    <List
-                        bordered
-                        dataSource={this.state.list}
-                        renderItem={(item, index) => (
-                            <List.Item
-                                onClick={this.handleItemDelete.bind(
-                                    this,
-                                    index
-                                )}
+                <div className={styles.container}>
+                    <div className={styles["container-content"]}>
+                        <Input
+                            allowClear
+                            value={this.state.inputValue}
+                            onChange={this.handleInputChange}
+                            placeholder="todo Info"
+                            style={{ width: "600px", marginRight: "10px" }}
+                        />
+                        <Button onClick={this.handleBtnClick.bind(this)}>
+                            提交
+                        </Button>
+                        {/* 两层表，一个是完成的表，一个是未完成的表，然后利用一个按钮来切换表 */}
+                        <List
+                            bordered
+                            dataSource={
+                                this.state.switchTitle === DisplayDone
+                                    ? this.state.list
+                                    : this.state.finishedList
+                            }
+                            renderItem={(item, index) => (
+                                <List.Item
+                                    actions={[
+                                        <a
+                                            key="list-delete"
+                                            onClick={this.handleItemDelete.bind(
+                                                this,
+                                                index
+                                            )}
+                                        >
+                                            delete
+                                        </a>,
+                                        <a key="list-done">done</a>,
+                                    ]}
+                                >
+                                    {item}
+                                </List.Item>
+                            )}
+                            style={{ width: "600px", marginTop: "10px" }}
+                        />
+                        <div className={styles["container-content__switch"]}>
+                            <Button
+                                onClick={this.handleChangeSwitch.bind(this)}
                             >
-                                {item}
-                            </List.Item>
-                        )}
-                        style={{ width: "300px", marginTop: "10px" }}
-                    />
+                                {this.state.switchTitle}
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </Fragment>
         );
