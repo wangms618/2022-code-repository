@@ -8,6 +8,7 @@ import {
     getAddItemAction,
     getDeleteItemAction,
     getChangeSwitchAction,
+    getAddDoneItemAction,
 } from "../../store/actionCreators";
 import { DisplayDone } from "../../const";
 class TodoList extends Component {
@@ -36,6 +37,9 @@ class TodoList extends Component {
 
     handleChangeSwitch() {
         getChangeSwitchAction();
+    }
+    handleItemDone() {
+        getAddDoneItemAction();
     }
     render() {
         return (
@@ -72,7 +76,15 @@ class TodoList extends Component {
                                         >
                                             delete
                                         </a>,
-                                        <a key="list-done">done</a>,
+                                        <a
+                                            key="list-done"
+                                            onClick={this.handleItemDone.bind(
+                                                this,
+                                                index
+                                            )}
+                                        >
+                                            done/back
+                                        </a>,
                                     ]}
                                 >
                                     {item}

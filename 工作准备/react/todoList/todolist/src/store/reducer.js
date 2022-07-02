@@ -37,8 +37,17 @@ export default (state = defaultState, action) => {
             newState.switchTitle = newState.switchTitle === DisplayDone ? DisplayUndone : DisplayDone
             return newState
         case ADD_DONE_ITEM:
+            if (newState.switchTitle === DisplayDone) {
+                const value = newState.list.splice(action.value, 1)
+                newState.finishedList.push(value)
+                return newState
+            } else {
+                const value = newState.finishedList.splice(action.value, 1)
+                newState.list.push(value)
+                return newState
+            }
             // TODO 将传过来的index取到，加入finishedList中
-        default:
-            return newState
+            default:
+                return newState
     }
 }
