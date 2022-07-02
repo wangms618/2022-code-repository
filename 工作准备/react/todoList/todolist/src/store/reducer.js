@@ -31,8 +31,13 @@ export default (state = defaultState, action) => {
             newState.inputValue = ""
             return newState;
         case DELETE_TODO_ITEM:
-            newState.list.splice(action.value, 1)
-            return newState;
+            if (newState.switchTitle === DisplayDone) {
+                newState.list.splice(action.value, 1)
+                return newState;
+            } else {
+                newState.finishedList.splice(action.value, 1)
+                return newState;
+            };
         case CHANGE_SWITCH_TITLE:
             newState.switchTitle = newState.switchTitle === DisplayDone ? DisplayUndone : DisplayDone
             return newState
@@ -45,9 +50,9 @@ export default (state = defaultState, action) => {
                 const value = newState.finishedList.splice(action.value, 1)
                 newState.list.push(value)
                 return newState
-            }
+            };
             // TODO 将传过来的index取到，加入finishedList中
-            default:
-                return newState
+        default:
+            return newState
     }
 }
